@@ -95,9 +95,8 @@ TG status:
 
 Now select listener dns_name/listallcustomers and verify result if application is accessible over ALB.
 
-<img width="1092" alt="image" src="https://user-images.githubusercontent.com/74225291/187036863-60d93515-490a-4958-abf9-1d2d199fa02d.png">
+<img width="1056" alt="image" src="https://user-images.githubusercontent.com/74225291/187057598-ca6f6ddd-3568-4c7b-b86b-3159bf7d9865.png">
 
-<img width="1056" alt="image" src="https://user-images.githubusercontent.com/74225291/187057582-94a9682a-7cd5-48af-a542-e0e1e868fa3a.png">
 
 3. Create WAF ACL 
 
