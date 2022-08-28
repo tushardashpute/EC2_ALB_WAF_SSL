@@ -85,14 +85,55 @@ Select the EC@ instance where we have started java application and incluster it 
 
 Then click on create target group.Now select the newly created target group for the listner and click on create load balancer.
 
-<img width="1286" alt="image" src="https://user-images.githubusercontent.com/74225291/187037321-6adf0969-1ab6-4e90-92f8-774c8df39449.png">
+<img width="1302" alt="image" src="https://user-images.githubusercontent.com/74225291/187056851-7f80275d-3fa5-410a-8d58-c20bf7abf090.png">
 
-<img width="1223" alt="image" src="https://user-images.githubusercontent.com/74225291/187037267-33f23f9e-0736-4fa6-aec0-93236b0f4440.png">
+<img width="1289" alt="image" src="https://user-images.githubusercontent.com/74225291/187056864-8cc756b7-4748-423b-aed6-a86b126d3127.png">
 
 TG status:
 
-<img width="1286" alt="image" src="https://user-images.githubusercontent.com/74225291/187037360-e87a8dac-2b35-4d41-895f-111ebd6ab32e.png">
+<img width="1263" alt="image" src="https://user-images.githubusercontent.com/74225291/187056879-09c2d114-3b7a-4a8d-a7fd-493091a37aec.png">
 
-Now select listener dns_name/listallcustomers and verify result if application is accessible over NLB.
+Now select listener dns_name/listallcustomers and verify result if application is accessible over ALB.
 
 <img width="1092" alt="image" src="https://user-images.githubusercontent.com/74225291/187036863-60d93515-490a-4958-abf9-1d2d199fa02d.png">
+
+<img width="1056" alt="image" src="https://user-images.githubusercontent.com/74225291/187057582-94a9682a-7cd5-48af-a542-e0e1e868fa3a.png">
+
+3. Create WAF ACL 
+
+Console --> Create web ACL --> 
+
+<img width="1235" alt="image" src="https://user-images.githubusercontent.com/74225291/187057078-a8fd8bd1-f703-487b-94a3-db53356043b0.png">
+
+Now click on Add AWS resource and select ALB which we created earlier.
+
+<img width="936" alt="image" src="https://user-images.githubusercontent.com/74225291/187057133-966825da-ad5c-442f-8814-c6a92d96b1c7.png">
+
+click Next
+
+<img width="1262" alt="image" src="https://user-images.githubusercontent.com/74225291/187057177-ee8bc477-52b6-422e-89f9-4da872969c4f.png">
+
+You can either use AWS managed rules(ddos/sql injection protection) or create your own rule. We will add rule to prevent traffic from URI path listallcustomers.
+
+<img width="1223" alt="image" src="https://user-images.githubusercontent.com/74225291/187057234-67f98935-3c5e-415a-9095-6f79fbe677ca.png">
+
+<img width="1161" alt="image" src="https://user-images.githubusercontent.com/74225291/187057245-958eaf6a-7c45-46cb-9322-f20100db10bc.png">
+
+<img width="1190" alt="image" src="https://user-images.githubusercontent.com/74225291/187057254-e19e10ad-63b8-4fe1-8702-27938b84cbc8.png">
+
+Now click on Add Rule. Keep everything as default --> next --> next --> Finally Review and create web ACL 
+
+Click on ALB --> integrated services (You can see WAF is enabled for the ALB and ACL stop_listallcustomers is assigned to it)
+
+<img width="1295" alt="image" src="https://user-images.githubusercontent.com/74225291/187056964-75fd5027-3ed7-4506-98ca-67563741bca3.png">
+
+Now if we try to access the same URL it will be blocked.
+
+<img width="1239" alt="image" src="https://user-images.githubusercontent.com/74225291/187056892-b317c7ae-aaef-472e-976c-bf0cd15cd3dc.png">
+
+From WEB ACL monitoring we can see requests are blocked for listallcustomers endpoint.
+
+<img width="1518" alt="image" src="https://user-images.githubusercontent.com/74225291/187057517-49b6713e-7a0b-4115-8704-92f5e9374fd1.png">
+
+<img width="1272" alt="image" src="https://user-images.githubusercontent.com/74225291/187057553-a8ee494a-01d6-4a0e-bd1e-cc526c0cea47.png">
+
