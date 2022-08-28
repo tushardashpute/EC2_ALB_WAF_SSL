@@ -1,11 +1,11 @@
 # EC2_ALB_WAF_SSL
 
-# EC2_NLB_WAF_SSL
-EC2_NLB_WAF_SSL
 
 Will cover 
 - deploy java app on EC2
-- Create NLB (LB,TG)
+- Create ALB (LB,TG)
+- Create WAF ACL (will block traffic for /listallcustomers URI path)
+- ADD SSL to ALB
 
 1. Run java app on EC2 instance
 
@@ -59,11 +59,11 @@ Once applitcation is started you can verify results:
 
 <img width="1114" alt="image" src="https://user-images.githubusercontent.com/74225291/187036819-95450548-690e-4777-808d-8c77ac1f32da.png">
 
-2. Create NLB (LB,TG)
+2. Create ABL (LB,TG)
 
-goto EC2 --> LoadBalancer --> New Load Balancer --> Select load balancer type as "Network Load Balancer"
+goto EC2 --> LoadBalancer --> New Load Balancer --> Select load balancer type as "Application Load Balancer"
 
-<img width="1169" alt="image" src="https://user-images.githubusercontent.com/74225291/187036956-3bbe92a4-0d26-4fb7-9d36-58974df506e6.png">
+<img width="1176" alt="image" src="https://user-images.githubusercontent.com/74225291/187056655-1309896c-0c5f-4c2b-98a7-0bed7840e08d.png">
 
 Select all the subnets where you are creating EC2 instances.
 
